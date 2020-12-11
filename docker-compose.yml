@@ -17,12 +17,12 @@ services:
     environment:
       - USE_DOCKER=yes
       - IPYTHONDIR=/app/.ipython
-      - DJANGO_SETTINGS_MODULE=voxus.settings
+      - DJANGO_SETTINGS_MODULE=quero.settings
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
-      - POSTGRES_DB=voxus
-      - POSTGRES_USER=voxus_user
-      - POSTGRES_PASSWORD=voxus_pass
+      - POSTGRES_DB=quero
+      - POSTGRES_USER=quero_user
+      - POSTGRES_PASSWORD=quero_pass
     ports:
       - "8000:8000"
     command: /start
@@ -36,6 +36,6 @@ services:
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
-      - POSTGRES_DB=voxus
-      - POSTGRES_USER=voxus_user
-      - POSTGRES_PASSWORD=voxus_pass
+      - POSTGRES_DB=quero
+      - POSTGRES_USER=quero_user
+      - POSTGRES_PASSWORD=quero_pass
