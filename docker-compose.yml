@@ -1,0 +1,41 @@
+version: '3'
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/Dockerfile
+    container_name: django
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    environment:
+      - USE_DOCKER=yes
+      - IPYTHONDIR=/app/.ipython
+      - DJANGO_SETTINGS_MODULE=voxus.settings
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=voxus
+      - POSTGRES_USER=voxus_user
+      - POSTGRES_PASSWORD=voxus_pass
+    ports:
+      - "8000:8000"
+    command: /start
+
+  postgres:
+    image: postgres:11
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+      - local_postgres_data_backups:/backups
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=voxus
+      - POSTGRES_USER=voxus_user
+      - POSTGRES_PASSWORD=voxus_pass

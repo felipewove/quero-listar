@@ -1,0 +1,8 @@
+pytz==2020.1  # https://github.com/stub42/pytz
+
+# Django
+# ------------------------------------------------------------------------------
+django==3.1.2  # pyup: < 3.1  # https://www.djangoproject.com/
+django-environ==0.4.5  # https://github.com/joke2k/django-environ
+django-model-utils==4.0.0  # https://github.com/jazzband/django-model-utils
+djangorestframework==3.12.1  # https://github.com/encode/django-rest-framework
