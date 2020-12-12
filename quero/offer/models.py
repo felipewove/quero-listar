@@ -11,7 +11,7 @@ class Offer(models.Model):
     full_price = models.FloatField()
     price_with_discount = models.FloatField()
     discount_percentage = models.FloatField()
-    start_date = models.FloatField()
+    start_date = models.CharField(_("Stard Date"), max_length=10)
     enrollment_semester = models.CharField(_("Enrollment Semester"), max_length=6)
     enabled = models.BooleanField(default=False)
     course = models.ForeignKey('Course', on_delete=models.DO_NOTHING)
