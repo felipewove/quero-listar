@@ -1,8 +1,11 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from quero.offer.serializers import UserSerializer, GroupSerializer, OfferSerializer, CourseSerializer, CampusSerializer, UniversitySerializer
+from django.contrib.auth.models import Group, User
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, viewsets
 
-from .models import Offer, Course, Campus, University
+from .models import Campus, Course, Offer, University
+from .serializers import (CampusSerializer, CourseSerializer, GroupSerializer,
+                          OfferSerializer, UniversitySerializer,
+                          UserSerializer)
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -27,6 +30,16 @@ class OfferViewSet(viewsets.ModelViewSet):
     """
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = [
+        "course__name",
+        "course__kind",
+        "course__level",
+        "course__shift",
+        "course__campus__city",
+        "course__campus__university__name",
+    ]
+    ordering_fields = ['discount_percentage']
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -35,6 +48,8 @@ class CourseViewSet(viewsets.ModelViewSet):
     """
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['kind', 'level', 'shift', 'campus__university__name']
 
 
 class CampusViewSet(viewsets.ModelViewSet):
