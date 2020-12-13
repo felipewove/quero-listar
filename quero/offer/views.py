@@ -26,7 +26,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 class OfferViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows offers to be viewed or edited.
+    API endpoint that allows offers to be viewed, edited, filtered and ordered.
     """
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
@@ -44,7 +44,7 @@ class OfferViewSet(viewsets.ModelViewSet):
 
 class CourseViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows Courses to be viewed or edited.
+    API endpoint that allows Courses to be viewed, edited and filtered.
     """
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
