@@ -9,6 +9,7 @@ Listing, API-like, universities and theirs courses
 * For the docker-compose, using architecture from Cookie-Cutter (check `compose` folder)
 * For requirements, splitted in base and local libs, for them create for more environments
 * Postgres as the database, because of schemas and views cached for scalabilty
+* GitHub Action serving Continuos Integration
 
 ## Running the project
 
@@ -55,4 +56,16 @@ Need to run some script or command, step into the container then run whatelse yo
 
 ```bash
 docker-compose run --rm django bash
+```
+
+## Testing
+
+Most of usability of this project is ensured on the correct use of the framework.
+
+So, most of their base stuff are already tested (don't need to ensure the Django can save an object, right?)
+
+Given the time, just tested the workflow to create an offer.
+
+```bash
+docker-compose run --rm django pytest
 ```
