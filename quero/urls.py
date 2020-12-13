@@ -22,6 +22,9 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'offer', views.OfferViewSet)
+router.register(r'course', views.CourseViewSet)
+router.register(r'campus', views.CampusViewSet)
+router.register(r'university', views.UniversityViewSet)
 
 
 urlpatterns = [
