@@ -3,8 +3,6 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from .models import University
-
 
 class UserTests(APITestCase):
     def test_create_account(self):
@@ -18,6 +16,13 @@ class UserTests(APITestCase):
 
 class QueroListarTests(APITestCase):
     def test_create_university_campus_course_offer(self):
+        """ To create an offer, we need to ensure that a course exists, because we need its id.
+        To create a course, we need to ensure that a campus exists, because we need its id.
+        To create a campus, we need to ensure that a university exists, because we need its id.
+        So, starting from creating a university then using its response to create the next object.
+
+        With this kind of test, using reverse(), we ensure the use of the endpoint then handled by a client.
+        """
         response_university = self.client.post(
             reverse("university-list"),
             {

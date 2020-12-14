@@ -19,6 +19,8 @@ With this command with essentials flags, docker will generate images with all th
 docker-compose up --build
 ```
 
+Go to http://localhost:8000/ to see the front-end of Django Rest Framework.
+
 ## Developing
 
 Docker-compose is configured to share the volume between container and the developer computer, so no re-building the image.
@@ -60,7 +62,7 @@ docker-compose run --rm django bash
 
 ## Testing
 
-Most of usability of this project is ensured on the correct use of the framework.
+Most of use of this project is ensured on the correct implementation of the framework.
 
 So, most of their base stuff are already tested (don't need to ensure the Django can save an object, right?)
 
