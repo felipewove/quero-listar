@@ -33,20 +33,13 @@ class OfferSerializer(serializers.ModelSerializer):
     """ Serialization of Offer model to render as JSON.
     The depth is responsible to render/show information of foreign key
     """
+    course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
     
     class Meta:
 
         model = Offer
         depth = 3
-        fields = [
-            "id",
-            "full_price",
-            "price_with_discount",
-            "start_date",
-            "enrollment_semester",
-            "enabled",
-            "course",
-        ]
+        fields = "__all__"
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -54,6 +47,7 @@ class CourseSerializer(serializers.ModelSerializer):
     """ Serialization of Course model to render as JSON.
     The depth is responsible to render/show information of foreign key
     """
+    campus = serializers.PrimaryKeyRelatedField(queryset=Campus.objects.all())
     
     class Meta:
         
@@ -67,7 +61,7 @@ class CampusSerializer(serializers.ModelSerializer):
     """ Serialization of Campus model to render as JSON.
     The depth is responsible to render/show information of foreign key
     """
-    
+    university = serializers.PrimaryKeyRelatedField(queryset=University.objects.all())
     class Meta:
 
         model = Campus
